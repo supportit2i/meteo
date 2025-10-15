@@ -6,22 +6,37 @@
     <title>Prévisions Béthune — Météo-France</title>
     <style>
       html, body {
-        width: 100%;
         height: 100%;
+        width: 100%;
         margin: 0;
         padding: 0;
-        overflow: hidden;
         display: flex;
-        justify-content: center;
-        align-items: center;
+        justify-content: center; /* Centrer horizontalement */
+        align-items: center;     /* Centrer verticalement */
+        background-color: #f0f0f0; /* (Optionnel) couleur de fond douce */
+        overflow: hidden;
       }
-iframe {
-  width: 100vw;
-  height: 100vh;
-  border: none;
-  transform: scale(1.3);
-  transform-origin: top left;
-}
+
+      iframe {
+        border: none;
+        width: 400px;   /* Taille de base du widget (tu peux ajuster) */
+        height: 600px;
+        transform: scale(2); /* 🔍 agrandit le widget (1 = normal, 2 = double) */
+        transform-origin: center center;
+      }
+
+      /* Rendre le zoom responsive pour petits écrans */
+      @media (max-width: 900px) {
+        iframe {
+          transform: scale(1.3);
+        }
+      }
+
+      @media (max-width: 600px) {
+        iframe {
+          transform: scale(1);
+        }
+      }
     </style>
   </head>
   <body>
