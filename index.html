@@ -2,11 +2,29 @@
 <html lang="fr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=600, height=1200, initial-scale=10" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Horloge Logwork — Europe/Paris</title>
+    <style>
+      html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden; /* Empêche les barres de défilement */
+      }
+      iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+    </style>
   </head>
   <body>
     <!-- Widget horloge Logwork -->
-    <iframe id="widget_autocomplete_preview"  width="150" height="300" frameborder="0" src="https://meteofrance.com/widget/prevision/621190##3D6AA2" title="Prévisions Béthune par Météo-France"> </iframe>
+    <iframe
+      id="widget_autocomplete_preview"
+      src="https://meteofrance.com/widget/prevision/621190##3D6AA2"
+      title="Prévisions Béthune par Météo-France">
+    </iframe>
   </body>
 </html>
