@@ -21,18 +21,18 @@
         border: none;
         width: 1080px;   /* Taille de base du widget (tu peux ajuster) */
         height: 1920px;
-        transform: scale(2); /* 🔍 agrandit le widget (1 = normal, 2 = double) */
+        transform: scale(1); /* 🔍 agrandit le widget (1 = normal, 2 = double) */
         transform-origin: center center;
       }
 
       /* Rendre le zoom responsive pour petits écrans */
-      @media (max-width: 900px) {
+      @media (max-width: 1920px) {
         iframe {
           transform: scale(1.3);
         }
       }
 
-      @media (max-width: 600px) {
+      @media (max-width: 1080px) {
         iframe {
           transform: scale(1);
         }
