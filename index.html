@@ -1,48 +1,61 @@
 <!doctype html>
 <html lang="fr">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Prévisions Béthune — Météo-France</title>
-    <style>
-      html, body {
-        height: 100%;
-        width: 100%;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        justify-content: center; /* Centrer horizontalement */
-        align-items: center;     /* Centrer verticalement */
-        background-color: #f0f0f0; /* (Optionnel) couleur de fond douce */
-        overflow: hidden;
-      }
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Widget Météo responsive</title>
+  <style>
+    :root{
+      /* Modifie ces valeurs si tu veux un autre maximum */
+      --widget-max-width: 150px; /* largeur d'origine */
+      --widget-aspect-percent: 200%; /* = (height/width)*100 => (300/150)*100 = 200% */
+    }
 
-      iframe {
-        border: none;
-        width: 1080px;   /* Taille de base du widget (tu peux ajuster) */
-        height: 1920px;
-        transform: scale(3); /* 🔍 agrandit le widget (1 = normal, 2 = double) */
-        transform-origin: center center;
-      }
+    /* Conteneur global centré */
+    .widget-wrapper{
+      width: 100%;
+      max-width: var(--widget-max-width);
+      margin: 0 auto;
+      box-sizing: border-box;
+    }
 
-      /* Rendre le zoom responsive pour petits écrans */
-      @media (max-width: 1920px) {
-        iframe {
-          transform: scale(1.3);
-        }
-      }
+    /* Technique "padding-top" pour conserver le ratio responsive */
+    .iframe-container{
+      position: relative;
+      width: 100%;
+      padding-top: var(--widget-aspect-percent); /* ratio hauteur/largeur */
+      background: #f8f8f8; /* léger fond pendant le chargement */
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    }
 
-      @media (max-width: 1080px) {
-        iframe {
-          transform: scale(1);
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <iframe
-      src="https://meteofrance.com/widget/prevision/621190##3D6AA2"
-      title="Prévisions Béthune par Météo-France">
-    </iframe>
-  </body>
+    .iframe-container iframe{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
+    /* Option: rendre cliquable pour zoom sur écrans larges */
+    @media (min-width: 400px){
+      .widget-wrapper { cursor: zoom-in; }
+    }
+  </style>
+</head>
+<body>
+  <div class="widget-wrapper" title="Prévisions Béthune">
+    <div class="iframe-container">
+      <!-- Iframe du widget Météo-France (même src que celui fourni) -->
+      <iframe id="widget_autocomplete_preview"
+              src="https://meteofrance.com/widget/prevision/621190##3D6AA2"
+              title="Prévisions Béthune par Météo-France"
+              aria-label="Prévisions Béthune par Météo-France">
+      </iframe>
+    </div>
+  </div>
+</body>
 </html>
